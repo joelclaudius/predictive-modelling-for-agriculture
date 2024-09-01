@@ -33,17 +33,3 @@ In the Jupyter Notebook:
 2. **Data Preprocessing**: The data is split into features (`N`, `P`, `K`, `ph`) and the target variable (`crop`). Missing values are checked (though none are handled here since there are no missing values).
 3. **Model Training**: Logistic regression models are trained on each individual feature to identify the best-performing one.
 4. **Evaluation**: Each model is evaluated using the weighted F1 score, and the feature with the highest score is selected as the best predictor.
-5. **Model Saving**: The best model (using the `K` feature) is saved using `joblib`.
-
-## Flask API
-
-The `app.py` file contains a Flask application that serves as a backend API:
-
-- **`/` (GET)**: A welcome route to test the API.
-- **`/predict` (POST)**: Accepts JSON data containing the soil properties (`N`, `P`, `K`, `ph`) and returns the predicted crop based on the trained logistic regression model.
-
-### Example Request
-
-```bash
-curl -X POST http://localhost:5000/predict -H "Content-Type: application/json" -d '{"N": 90, "P": 40, "K": 70, "ph": 6.5}'
-```
